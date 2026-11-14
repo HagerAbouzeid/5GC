@@ -5,6 +5,9 @@ metadata:
   name: open5gs-{{ .name }}
   namespace: open5gs
 spec:
+  {{- if .headless }}
+  clusterIP: None
+  {{- end }}
   selector:
     app: open5gs-{{ .name }}
   ports:

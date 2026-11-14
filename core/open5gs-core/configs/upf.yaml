@@ -9,10 +9,10 @@ global:
 upf:
   pfcp:
     server:
-      - address: 0.0.0.0
+      - address: __POD_IP__
   gtpu:
     server:
-      - address: 0.0.0.0
+      - address: __POD_IP__
   session:
     - subnet: 10.45.0.0/16
       gateway: 10.45.0.1

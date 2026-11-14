@@ -18,8 +18,16 @@ spec:
         - name: {{ .name }}
           image: {{ $.Values.image }}
           imagePullPolicy: Always
-          command: ["{{ .daemon }}"]
-          args: ["-c", "/etc/open5gs/{{ .name }}.yaml"]
+          env:
+            - name: POD_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
+          command: ["/bin/sh", "-c"]
+          args:
+            - |
+              sed "s/__POD_IP__/${POD_IP}/g" /etc/open5gs/{{ .name }}.yaml > /tmp/{{ .name }}.yaml
+              exec {{ .daemon }} -c /tmp/{{ .name }}.yaml
           {{- if .privileged }}
           securityContext:
             capabilities:

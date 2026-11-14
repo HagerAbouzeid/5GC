@@ -21,7 +21,11 @@ nfs:
     daemon: open5gs-upfd
     port: 7777
     privileged: true
+    headless: true
     extraPorts:
+      - name: pfcp
+        port: 8805
+        protocol: UDP
       - name: gtpu
         port: 2152
         protocol: UDP

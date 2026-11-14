@@ -22,7 +22,7 @@ module "eks" {
   cluster_name    = local.cluster_name
   cluster_version = local.cluster_version
 
-  cluster_endpoint_public_access = true
+  cluster_endpoint_public_access           = true
   enable_cluster_creator_admin_permissions = true
 
   vpc_id     = module.vpc.vpc_id
@@ -39,11 +39,21 @@ module "eks" {
       most_recent = true
     }
     aws-ebs-csi-driver = {
-      most_recent = true
+      most_recent              = true
       service_account_role_arn = module.ebs_csi_irsa_role.iam_role_arn
     }
   }
 
+  node_security_group_additional_rules = {
+    ingress_self_all = {
+      description = "Allow all traffic between nodes (UDP for PFCP/GTP-U)"
+      protocol    = "-1"
+      from_port   = 0
+      to_port     = 0
+      type        = "ingress"
+      self        = true
+    }
+  }
   eks_managed_node_groups = {
     default = {
       instance_types = ["m7i-flex.large"]

@@ -16,16 +16,16 @@ smf:
         - uri: http://open5gs-scp.open5gs.svc.cluster.local:7777
   pfcp:
     server:
-      - address: 0.0.0.0
+      - address: __POD_IP__
     client:
       upf:
         - address: open5gs-upf.open5gs.svc.cluster.local
   gtpc:
     server:
-      - address: 0.0.0.0
+      - address: __POD_IP__
   gtpu:
     server:
-      - address: 0.0.0.0
+      - address: __POD_IP__
   metrics:
     server:
       - address: 0.0.0.0
