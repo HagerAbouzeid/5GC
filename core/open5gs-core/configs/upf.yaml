@@ -12,7 +12,7 @@ upf:
       - address: __POD_IP__
   gtpu:
     server:
-      - address: __POD_IP__
+      - address: 0.0.0.0
   session:
     - subnet: 10.45.0.0/16
       gateway: 10.45.0.1
