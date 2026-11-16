@@ -27,8 +27,8 @@ data:
     homeNetworkPublicKey: '5a8d38864820197c3394b92613b20b91633cbd897119273bf8e4a6f4eec0a650'
     homeNetworkPublicKeyId: 1
     routingIndicator: '0000'
-    key: REDACTED
-    op: REDACTED
+    key: '__UE_K__'
+    op: '__UE_OPC__'
     opType: 'OPC'
     amf: '8000'
     imei: '356938035643803'
